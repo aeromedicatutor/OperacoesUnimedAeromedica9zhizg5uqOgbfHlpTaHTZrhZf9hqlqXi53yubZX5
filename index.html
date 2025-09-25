@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FAQ – Dúvidas Frequentes</title>
+  <title>FAQ – Dúvidas Frequentes (por Blocos)</title>
   <style>
     /* --------- Reset e base ---------- */
     *, *::before, *::after { box-sizing: border-box; }
@@ -215,24 +215,26 @@
     <main class="a4" role="document" aria-label="Folha A4">
       <!-- Cabeçalho com espaço para a logo -->
       <header>
-        <!-- Substitua a imagem abaixo pela sua logo (ou remova o texto de placeholder) -->
         <div class="logo-wrap" aria-label="Espaço para logo">
           <img src="logo.jpeg" alt="Logo da Empresa">
           <span style="font-size:12px;color:#9ca3af;">Sua Logo</span>
         </div>
         <div class="title">
           <h1>FAQ – Dúvidas Frequentes</h1>
-          <small>Guia rápido de atendimento e integrações</small>
+          <small>Guia rápido de atendimento e integrações • organizado por blocos</small>
         </div>
       </header>
 
       <!-- Corpo da "folha" A4 -->
       <div class="sheet-body">
-        <div class="section">
-          <div class="kicker">Preenchimento pedido de remoção</div>
+        <div class="kicker">Preenchimento de pedido de remoção — agora identificado por blocos do sistema</div>
+
+        <!-- BLOCO: SOLICITANTE -->
+        <section class="section" aria-labelledby="bloco-solicitante">
+          <h2 id="bloco-solicitante">SOLICITANTE</h2>
 
           <details open>
-            <summary>1 – Quem é o solicitante que preciso informar no campo?</summary>
+            <summary>Quem é o solicitante que preciso informar no campo?</summary>
             <div class="qa-content">
               <ul>
                 <li class="ok">✔ Colaborador que fez o pedido da remoção</li>
@@ -240,16 +242,21 @@
               </ul>
             </div>
           </details>
+        </section>
+
+        <!-- BLOCO: IDENTIFICAÇÃO BENEFICIÁRIOS -->
+        <section class="section" aria-labelledby="bloco-beneficiarios">
+          <h2 id="bloco-beneficiarios">IDENTIFICAÇÃO BENEFICIÁRIOS</h2>
+          <div class="kicker">— espaço reservado para pesquisa/identificação de beneficiários</div>
+          <!-- Mantido como placeholder conforme arquivo original -->
+        </section>
+
+        <!-- BLOCO: LOCAL DO ATENDIMENTO (ORIGEM E DESTINO) -->
+        <section class="section" aria-labelledby="bloco-local">
+          <h2 id="bloco-local">LOCAL DO ATENDIMENTO (ORIGEM E DESTINO)</h2>
 
           <details>
-            <summary>2 – Quais campos são obrigatórios no atendimento?</summary>
-            <div class="qa-content">
-              <p class="ok">✔ Todos os campos em vermelho</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>3 – E se o Hospital/Clínica não estiver cadastrado no IRIS ou Dedalus?</summary>
+            <summary>E se o Hospital/Clínica não estiver cadastrado no IRIS ou Dedalus?</summary>
             <div class="qa-content">
               <p class="ok">✔ Pesquisar na internet e coletar:</p>
               <ul>
@@ -262,55 +269,7 @@
           </details>
 
           <details>
-            <summary>4 – O relatório médico veio confuso, o que fazer?</summary>
-            <div class="qa-content">
-              <ul>
-                <li class="ok">✔ Ligar para a Origem</li>
-                <li class="ok">✔ Pedir explicação dos dados médicos</li>
-                <li class="ok">✔ Avisar que não é possível continuar sem informações claras</li>
-              </ul>
-            </div>
-          </details>
-
-          <details>
-            <summary>5 – Qual o tamanho máximo do arquivo para anexar?</summary>
-            <div class="qa-content">
-              <p class="ok">✔ Até 10 MB</p>
-              <p class="warn">⚠️ se passar disso, pode dar erro ao anexar e ter que inserir novamente</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>6 – O cadastro existe no Dedalus, mas não aparece no IRIS. O que fazer?</summary>
-            <div class="qa-content">
-              <ul>
-                <li class="ok">✔ O problema é CNES ou Latitude/Longitude zerados</li>
-                <li class="ok">✔ Acionar o suporte para corrigir</li>
-              </ul>
-            </div>
-          </details>
-
-          <details>
-            <summary>7 – Atendimento negativo: O que fazer quando aparece no Genesys?</summary>
-            <div class="qa-content">
-              <p class="ok">✔ Significa que:</p>
-              <ul>
-                <li>O Dedalus não integrou OU</li>
-                <li>O anexo do pedido médico deu erro</li>
-              </ul>
-              <p class="ok">✔ Corrigir a informação errada na solicitação OU corrigir o anexo</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>8 – Caso seja um seriado, como proceder dentro do IRIS?</summary>
-            <div class="qa-content">
-              <p>—</p>
-            </div>
-          </details>
-
-          <details>
-            <summary>9 – O que fazer se o atendimento for em Consultório, Asilo ou Casa do paciente?</summary>
+            <summary>O que fazer se o atendimento for em Consultório, Asilo ou Casa do paciente?</summary>
             <div class="qa-content">
               <ul>
                 <li class="ok">✅ Atualmente, essa melhoria ainda não está disponível no IRIS.</li>
@@ -322,7 +281,48 @@
           </details>
 
           <details>
-            <summary>10 – Corrigi um chamado no IRIS, salvei e integrou com sucesso. O que fazer depois?</summary>
+            <summary>O cadastro existe no Dedalus, mas não aparece no IRIS. O que fazer?</summary>
+            <div class="qa-content">
+              <ul>
+                <li class="ok">✔ O problema é CNES ou Latitude/Longitude zerados</li>
+                <li class="ok">✔ Acionar o suporte para corrigir</li>
+              </ul>
+            </div>
+          </details>
+        </section>
+
+        <!-- BLOCO: ATENDIMENTO -->
+        <section class="section" aria-labelledby="bloco-atendimento">
+          <h2 id="bloco-atendimento">ATENDIMENTO</h2>
+
+          <details>
+            <summary>Quais campos são obrigatórios no atendimento?</summary>
+            <div class="qa-content">
+              <p class="ok">✔ Todos os campos em vermelho</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Atendimento negativo: o que fazer quando aparece no Genesys?</summary>
+            <div class="qa-content">
+              <p class="ok">✔ Significa que:</p>
+              <ul>
+                <li>O Dedalus não integrou OU</li>
+                <li>O anexo do pedido médico deu erro</li>
+              </ul>
+              <p class="ok">✔ Corrigir a informação errada na solicitação OU corrigir o anexo</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Caso seja um seriado, como proceder dentro do IRIS?</summary>
+            <div class="qa-content">
+              <p>—</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Corrigi um chamado no IRIS, salvei e integrou com sucesso. O que fazer depois?</summary>
             <div class="qa-content">
               <p class="ok">✅ Quando você corrige, salva e integra um chamado com sucesso, a solicitação será enviada para outro atendente que receber essa interação.</p>
               <p>✅ Para continuar acompanhando o chamado que você resolveu:</p>
@@ -332,16 +332,41 @@
               </ul>
             </div>
           </details>
-        </div>
+        </section>
 
-        <div class="section">
-          <h2>Pesquisa de Beneficiários</h2>
-          <p class="kicker">— espaço reservado para pesquisa de beneficiarios</p>
-        </div>
+        <!-- BLOCO: RECURSO -->
+        <section class="section" aria-labelledby="bloco-recurso">
+          <h2 id="bloco-recurso">RECURSO</h2>
+          <div class="kicker">— sem perguntas cadastradas neste bloco ainda</div>
+        </section>
+
+        <!-- BLOCO: PEDIDO MÉDICO -->
+        <section class="section" aria-labelledby="bloco-pedido-medico">
+          <h2 id="bloco-pedido-medico">PEDIDO MÉDICO</h2>
+
+          <details>
+            <summary>O relatório médico veio confuso, o que fazer?</summary>
+            <div class="qa-content">
+              <ul>
+                <li class="ok">✔ Ligar para a Origem</li>
+                <li class="ok">✔ Pedir explicação dos dados médicos</li>
+                <li class="ok">✔ Avisar que não é possível continuar sem informações claras</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>Qual o tamanho máximo do arquivo para anexar ao pedido?</summary>
+            <div class="qa-content">
+              <p class="ok">✔ Até 10 MB</p>
+              <p class="warn">⚠️ Se passar disso, pode dar erro ao anexar e ter que inserir novamente.</p>
+            </div>
+          </details>
+        </section>
       </div>
 
       <footer>
-        <span>Documento interno • Versão 1.0</span>
+        <span>Documento interno • Versão 1.1</span>
         <span>Página A4 • Pronto para impressão</span>
       </footer>
     </main>
