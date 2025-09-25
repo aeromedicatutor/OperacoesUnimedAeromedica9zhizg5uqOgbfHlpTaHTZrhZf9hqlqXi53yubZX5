@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ – Dúvidas Frequentes</title>
+  <style>
+    /* --------- Reset e base ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: #f3f4f6;
+      color: #111827;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+      line-height: 1.5;
+    }
+
+    /* --------- Contêiner central --------- */
+    .viewport {
+      min-height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    /* ---------- Folha A4 (tela) ---------- */
+    .a4 {
+      width: 210mm;                 /* largura A4 */
+      min-height: 297mm;            /* altura A4 */
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(0,0,0,.12);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Ajuste responsivo: em telas pequenas, reduz escala mantendo proporção */
+    @media (max-width: 940px) {
+      .a4 {
+        transform-origin: top center;
+        transform: scale(0.9);
+      }
+    }
+    @media (max-width: 840px) {
+      .a4 { transform: scale(0.8); }
+    }
+    @media (max-width: 740px) {
+      .a4 { transform: scale(0.7); }
+    }
+    @media (max-width: 640px) {
+      .a4 { transform: scale(0.6); }
+    }
+
+    /* ---------- Cabeçalho com logo ---------- */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      border-bottom: 1px solid #e5e7eb;
+      background: linear-gradient(180deg, #ffffff, #fafafa);
+    }
+    .logo-wrap {
+      width: 140px;
+      height: 48px;
+      border: 2px dashed #d1d5db;   /* área para inserir a logo */
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      background: #fff;
+      overflow: hidden;
+    }
+    .logo-wrap img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .title {
+      display: flex;
+      flex-direction: column;
+    }
+    .title h1 {
+      font-size: 20px;
+      margin: 0;
+      letter-spacing: .2px;
+    }
+    .title small {
+      color: #6b7280;
+    }
+
+    /* ---------- Corpo da folha ---------- */
+    .sheet-body {
+      padding: 24mm 18mm; /* margem interna tipo documento */
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    h2 {
+      font-size: 18px;
+      margin: 0 0 8px 0;
+    }
+    .kicker {
+      color: #6b7280;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    /* ---------- Blocos de seção ---------- */
+    .section {
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 16px;
+      background: #fafafa;
+    }
+    .section + .section { margin-top: 8px; }
+
+    /* ---------- Acordeão (details/summary) ---------- */
+    details {
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      background: #ffffff;
+      padding: 12px 14px;
+    }
+    details + details { margin-top: 10px; }
+
+    summary {
+      cursor: pointer;
+      font-weight: 600;
+      outline: none;
+      list-style: none;
+    }
+    /* Remove o triângulo padrão e cria ícone custom */
+    summary::-webkit-details-marker { display: none; }
+    summary::before {
+      content: "＋";
+      margin-right: 8px;
+      font-weight: 700;
+      display: inline-block;
+      width: 1em;
+    }
+    details[open] summary::before { content: "－"; }
+
+    /* Conteúdo interno */
+    .qa-content {
+      margin-top: 10px;
+      color: #374151;
+      font-size: 15px;
+    }
+    ul, ol { margin: 8px 0 0 20px; }
+    li { margin: 4px 0; }
+    .hint {
+      display: inline-block;
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    /* Marcas visuais */
+    .ok { color: #065f46; }        /* verde escuro */
+    .warn { color: #b45309; }      /* âmbar */
+    .dot {
+      display: inline-block;
+      width: 6px; height: 6px;
+      background: currentColor;
+      border-radius: 50%;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    /* ---------- Rodapé ---------- */
+    footer {
+      margin-top: auto;
+      padding: 12px 24px 16px;
+      color: #6b7280;
+      font-size: 12px;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* ---------- Estilos de impressão (A4 real) ---------- */
+    @page {
+      size: A4;
+      margin: 0;
+    }
+    @media print {
+      body { background: #fff; }
+      .viewport { padding: 0; }
+      .a4 {
+        box-shadow: none;
+        border-radius: 0;
+        width: 210mm;
+        min-height: 297mm;
+      }
+      /* Garantir que a folha ocupe a página inteira ao imprimir */
+      .sheet-body { padding: 24mm 18mm; }
+      /* Evitar que acordeões colapsem na impressão */
+      details[open] > * { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="viewport">
+    <main class="a4" role="document" aria-label="Folha A4">
+      <!-- Cabeçalho com espaço para a logo -->
+      <header>
+        <!-- Substitua a imagem abaixo pela sua logo (ou remova o texto de placeholder) -->
+        <div class="logo-wrap" aria-label="Espaço para logo">
+          <img src="logo.jpeg" alt="Logo da Empresa">
+          <span style="font-size:12px;color:#9ca3af;">Sua Logo</span>
+        </div>
+        <div class="title">
+          <h1>FAQ – Dúvidas Frequentes</h1>
+          <small>Guia rápido de atendimento e integrações</small>
+        </div>
+      </header>
+
+      <!-- Corpo da "folha" A4 -->
+      <div class="sheet-body">
+        <div class="section">
+          <div class="kicker">Preenchimento pedido de remoção</div>
+
+          <details open>
+            <summary>1 – Quem é o solicitante que preciso informar no campo?</summary>
+            <div class="qa-content">
+              <ul>
+                <li class="ok">✔ Colaborador que fez o pedido da remoção</li>
+                <li class="ok">✔ Ou atendente da central do plano de saúde</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>2 – Quais campos são obrigatórios no atendimento?</summary>
+            <div class="qa-content">
+              <p class="ok">✔ Todos os campos em vermelho</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>3 – E se o Hospital/Clínica não estiver cadastrado no IRIS ou Dedalus?</summary>
+            <div class="qa-content">
+              <p class="ok">✔ Pesquisar na internet e coletar:</p>
+              <ul>
+                <li>CNES</li>
+                <li>CEP</li>
+                <li>Latitude</li>
+                <li>Longitude</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>4 – O relatório médico veio confuso, o que fazer?</summary>
+            <div class="qa-content">
+              <ul>
+                <li class="ok">✔ Ligar para a Origem</li>
+                <li class="ok">✔ Pedir explicação dos dados médicos</li>
+                <li class="ok">✔ Avisar que não é possível continuar sem informações claras</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>5 – Qual o tamanho máximo do arquivo para anexar?</summary>
+            <div class="qa-content">
+              <p class="ok">✔ Até 10 MB</p>
+              <p class="warn">⚠️ se passar disso, pode dar erro ao anexar e ter que inserir novamente</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>6 – O cadastro existe no Dedalus, mas não aparece no IRIS. O que fazer?</summary>
+            <div class="qa-content">
+              <ul>
+                <li class="ok">✔ O problema é CNES ou Latitude/Longitude zerados</li>
+                <li class="ok">✔ Acionar o suporte para corrigir</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>7 – Atendimento negativo: O que fazer quando aparece no Genesys?</summary>
+            <div class="qa-content">
+              <p class="ok">✔ Significa que:</p>
+              <ul>
+                <li>O Dedalus não integrou OU</li>
+                <li>O anexo do pedido médico deu erro</li>
+              </ul>
+              <p class="ok">✔ Corrigir a informação errada na solicitação OU corrigir o anexo</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>8 – Caso seja um seriado, como proceder dentro do IRIS?</summary>
+            <div class="qa-content">
+              <p>—</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>9 – O que fazer se o atendimento for em Consultório, Asilo ou Casa do paciente?</summary>
+            <div class="qa-content">
+              <ul>
+                <li class="ok">✅ Atualmente, essa melhoria ainda não está disponível no IRIS.</li>
+                <li class="ok">✅ O sistema irá registrar o atendimento de forma incorreta, chegando como negativo.</li>
+                <li class="ok">✅ Nesses casos, é necessário fazer a correção manual diretamente no IRIS.</li>
+                <li class="ok">✅ Após corrigir, prossiga normalmente com o fluxo do chamado.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>10 – Corrigi um chamado no IRIS, salvei e integrou com sucesso. O que fazer depois?</summary>
+            <div class="qa-content">
+              <p class="ok">✅ Quando você corrige, salva e integra um chamado com sucesso, a solicitação será enviada para outro atendente que receber essa interação.</p>
+              <p>✅ Para continuar acompanhando o chamado que você resolveu:</p>
+              <ul>
+                <li>Solicite a transferência do atendimento novamente para você.</li>
+                <li>Dessa forma, você consegue dar seguimento e finalizar corretamente o fluxo.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="section">
+          <h2>Pesquisa de Beneficiários</h2>
+          <p class="kicker">— espaço reservado para pesquisa de beneficiarios</p>
+        </div>
+      </div>
+
+      <footer>
+        <span>Documento interno • Versão 1.0</span>
+        <span>Página A4 • Pronto para impressão</span>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
